@@ -1,7 +1,7 @@
 <template>
     <div>
-  <app-header title-text="User Profile 2"></app-header>
-    <h2>User Profile</h2>
+  <app-header title-text="Profile"></app-header>
+    <h2>User 2 Profile</h2>
     <ul>
       <li :key="user.id" v-for="user in users">
         <p><b>ID {{user.UserID}} -   </b>{{user.Fname}} {{user.Lname}}  -  Account No :{{user.AccountNo}}</p>
@@ -38,7 +38,7 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
     import Header from "../components/Header";
     export default {
-        name: "sendHistory",
+        name: "user2",
         components:{
         appHeader: Header,
         },
@@ -56,8 +56,7 @@ import VueAxios from 'vue-axios';
       currentUser: null,
       amount: null,
       newamount: null,
-      lasamount:null
-
+      lasamount:null,
     }
     },
         methods:{
@@ -86,6 +85,19 @@ import VueAxios from 'vue-axios';
             },
 onSubmit() {
 
+
+
+      fetch('http://localhost:3000/reciver1')
+        .then((response) => response.json())
+        .then((result) => {
+          this.lasamountUser2 = result[0].Balance
+          console.log("User 1 Balance",lasamountUser2)
+        })
+        .catch(() => {
+          console.log({ message: -1 })
+        })
+
+
 const formData = new FormData()
           formData.append('SenderID', this.currentUser)
           formData.append('ReciverID', this.selected)
@@ -95,23 +107,17 @@ axios.post('http://localhost:3000/history', formData, {
             alert("Transaction was completed successfully")
           })
 this.newamount = (this.lasamount - this.amount)
-
 axios.put('http://localhost:3000/users', {
           Balance: this.newamount,
           UserID: this.currentUser
           }).then((res) => {
-            alert("Transaction user1 done")
           })
-
-this.newamount = (this.lasamount + this.amount)
-
+this.newamount = (this.lasamountUser2 + this.amount)
 axios.put('http://localhost:3000/users', {
           Balance: this.newamount,
           UserID: this.selected
           }).then((res) => {
-            alert("Transaction user1 done")
           })
-
         },
         }
     }

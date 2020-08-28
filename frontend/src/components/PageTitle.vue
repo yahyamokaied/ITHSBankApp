@@ -13,7 +13,7 @@
 
 <style scoped>
     #title{
-        font-size:4em;
+        font-size:3em;
         font-family: 'Arial', Tahoma;
         padding: 15px;
     }

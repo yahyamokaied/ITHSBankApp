@@ -66,6 +66,32 @@ app.get('/user2', (request, response) => {
         })
 })
 
+app.get('/reciver1', (request, response) => {
+    database_.all('SELECT * from USERS WHERE UserID = 1;')
+        .then((rows) => {
+            console.log('Fetching All USERS')
+            return response.status(201).send(rows)
+        })
+        .catch((error) => {
+            console.log('Error while fetching USERS')
+            return response.status(401).send({ message: error }
+            )
+        })
+})
+
+app.get('/reciver2', (request, response) => {
+    database_.all('SELECT * from USERS WHERE UserID = 2;')
+        .then((rows) => {
+            console.log('Fetching All USERS')
+            return response.status(201).send(rows)
+        })
+        .catch((error) => {
+            console.log('Error while fetching USERS')
+            return response.status(401).send({ message: error }
+            )
+        })
+})
+
 
 app.get('/user2', (request, response) => {
     database_.all('SELECT * from USERS WHERE UserID = 2')

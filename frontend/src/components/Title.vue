@@ -15,7 +15,7 @@
 
 <style scoped>
     #title{
-        padding:.5em;
+        padding:.4em;
         font-size:2em;
     }
 </style>

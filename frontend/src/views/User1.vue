@@ -1,7 +1,7 @@
 <template>
     <div>
-  <app-header title-text="User Profile 1"></app-header>
-    <h2>User Profile</h2>
+  <app-header title-text="Profile"></app-header>
+    <h2>User 1 Profile</h2>
     <ul>
       <li :key="user.id" v-for="user in users">
         <p><b>ID {{user.UserID}} -   </b>{{user.Fname}} {{user.Lname}}  -  Account No :{{user.AccountNo}}</p>
@@ -38,7 +38,7 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
     import Header from "../components/Header";
     export default {
-        name: "sendHistory",
+        name: "user1",
         components:{
         appHeader: Header,
         },
@@ -56,8 +56,8 @@ import VueAxios from 'vue-axios';
       currentUser: null,
       amount: null,
       newamount: null,
-      lasamount:null
-
+      lasamount:null,
+      lastamountUser2:null
     }
     },
         methods:{
@@ -84,8 +84,9 @@ import VueAxios from 'vue-axios';
             setTitle(){
                 document.title = 'User1'
             },
-onSubmit() {
 
+onSubmit() {
+  
 const formData = new FormData()
           formData.append('SenderID', this.currentUser)
           formData.append('ReciverID', this.selected)
@@ -95,22 +96,22 @@ axios.post('http://localhost:3000/history', formData, {
             alert("Transaction was completed successfully")
           })
 this.newamount = (this.lasamount - this.amount)
-
 axios.put('http://localhost:3000/users', {
           Balance: this.newamount,
           UserID: this.currentUser
           }).then((res) => {
-            alert("Transaction user1 done")
           })
-
-this.newamount = (this.lasamount + this.amount)
-
+this.newamount = (50000 + this.amount)
 axios.put('http://localhost:3000/users', {
           Balance: this.newamount,
           UserID: this.selected
           }).then((res) => {
-            alert("Transaction user1 done")
           })
+        this.$router.push({path: "/history"})
+
+
+
+
 
         },
         }

@@ -2,11 +2,11 @@
     <div id="home">
         <app-header title-text="Welcome to our App"></app-header>
                 <div> Developed By :   </div>
-                <div> By : 1  </div>
-                <div> By : 2  </div>
-                <div> By : 3  </div>
-                <div> By : 4  </div>
-                <div> By : 5  </div>
+                <div> 1 : Christopher Lundqvist  </div>
+                <div> 2 : Farah Adam  </div>
+                <div> 3 : William Väisänen  </div>
+                <div> 4 : Alfred Sävblom  </div>
+                <div> 5 : Yahya Mokaied  </div>
     </div>
 </template>
 

@@ -5,7 +5,6 @@
         <router-link to="/users">Users</router-link>
         <router-link to="/history">History</router-link>
         <router-link to="/user1">User1</router-link>
-        <router-link to="/user2">User2</router-link>
     </div>
 </template>
 
